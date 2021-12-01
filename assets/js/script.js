@@ -10,10 +10,12 @@ document.addEventListener("DOMContentLoaded", function(){
                 alert("You've clicked to submit!")
             } else{
                 let gametype = this.getAttribute('data-type')
-                alert(`You've clicked on ${gametype}!`)
+                runGame(gametype);
             }
         } )
     }
+
+    runGame("addition")
 })
 
 /**
@@ -21,11 +23,18 @@ document.addEventListener("DOMContentLoaded", function(){
  * after the user's answer has been processed
  */
 
-function runGame(){
+function runGame(gametype){
 
     //Getting two operators with random numbers 1 - 25//
     let num1 = Math.floor(Math.random()*25) + 1;
     let num2 = Math.floor(Math.random()*25) + 1;
+
+    if( gametype === "addition"){
+        displayAdditionQuestion(num1, num2);
+    } else{
+        alert(`Unknwon game type ${gametype}`);
+        throw `Unknwon game type ${gametype} Aborting`;
+    }
 }
 
 function checkAnswer(){
@@ -44,7 +53,12 @@ function incrementWrongAnswer(){
 
 }
 
-function displayAdditionQuestion(){
+function displayAdditionQuestion(operand1, operand2){
+
+    document.getElementById("operand-one").textContent = operand1;
+    document.getElementById("operand-two").textContent = operand2;
+    document.getElementById("operator").textContent = "+";
+
 
 }
 
