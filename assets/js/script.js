@@ -34,6 +34,10 @@ function runGame(gametype){
 
     } else if(gametype === "multiply"){
         displayMultiplyQUestion(num1, num2);
+
+    } else if(gametype === "subtract"){
+        displaySubtractQuestion(num1, num2);
+
     } else{
         alert(`Unknwon game type ${gametype}`);
         throw `Unknwon game type ${gametype} Aborting`;
@@ -75,6 +79,8 @@ function calculateCorrectAnswer(){
         return [operand1 + operand2, "addition"];
     } else if(operator === "x"){
         return [operand1 * operand2, "multiply"];
+    } else if(operator === "-"){
+        return [operand1 - operand2, "subtract"];
     } else{
         alert(`Unknown operator ${operator}`);
     }
@@ -109,8 +115,11 @@ function displayAdditionQuestion(operand1, operand2){
 
 }
 
-function displaySubtractQuestion(){
+function displaySubtractQuestion(operand1, operand2){
 
+    document.getElementById("operand-one").textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById("operand-two").textContent = operand1 > operand2 ? operand2 : operand1;
+    document.getElementById("operator").textContent = "-";
 }
 
 function displayMultiplyQUestion(operand1, operand2){
