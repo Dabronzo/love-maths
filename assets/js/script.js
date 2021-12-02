@@ -15,6 +15,15 @@ document.addEventListener("DOMContentLoaded", function(){
         } )
     }
 
+    //adding an event listener that check if the event is the Enter keydown and if it so
+    // calls the function checkAnswer()
+    
+    document.getElementById("answer-box").addEventListener('keydown', function(event){
+        if (event.key === "Enter"){
+            checkAnswer();
+        }
+    })
+
     runGame("addition")
 })
 
@@ -24,6 +33,10 @@ document.addEventListener("DOMContentLoaded", function(){
  */
 
 function runGame(gametype){
+
+    document.getElementById("answer-box").value = "";
+    //each time the game runs make the typing cursor go to the answer box
+    document.getElementById("answer-box").focus();
 
     //Getting two operators with random numbers 1 - 25//
     let num1 = Math.floor(Math.random()*25) + 1;
